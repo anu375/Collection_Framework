@@ -1,0 +1,66 @@
+package ListIf;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Fourth {
+
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<>();
+		list.add(new Student(1,"abc","abc@gmail.com"));
+		list.add(new Student(2,"cde","cde@gmail.com"));
+		System.out.println(list);
+		
+		for(Student st:list) {
+			if(st.getName().equals("abc")) {
+				st.setEmail("xyz@gmail.com");
+			}
+		}
+		System.out.println(list);
+		
+	}
+}
+
+class Student{
+	int id;
+	String name;
+	String email;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Student(int id,String name,String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+	}
+	
+	public String toString() {
+		return this.id+" "+this.name+" "+this.email;
+	}
+	public boolean equals(Object o) {
+		Student st = (Student)o;
+		return this.name.equals(st.getName())&& this.id == st.id && this.email.equals(st.getEmail());
+	}
+	public int hashCode() {
+		return Objects.hash(this.email,this.id,this.name);
+	}
+}
